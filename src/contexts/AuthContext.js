@@ -9,7 +9,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import "../firebase";
 
-const AuthContext = React.createContext();
+const AuthContext = React.createContext("");
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -45,11 +45,13 @@ export function AuthProvider({ children }) {
     });
   }
 
+  // login function
   function login(email, password) {
     const auth = getAuth();
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  // logout function
   function logout() {
     const auth = getAuth();
     return signOut(auth);
